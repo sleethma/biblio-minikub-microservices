@@ -31,7 +31,7 @@ spec:
             cpu: "250m"
 
         # for faster SIGKILL shutdown
-        terminationGracePeriodSeconds: 5
+        #terminationGracePeriodSeconds: 5
         
         # check if go-kub-dock-services is alive and healthy
         readinessProbe:
