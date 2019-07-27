@@ -1,15 +1,15 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: go-kub-dock-services
+  name: webserver
   labels:
-    app: go-kub-dock-services
+    app: webserver
 spec:
   replicas: 3
   template:
     metadata:
       labels:
-        app: go-kub-dock-services
+        app: webserver
         tier: service
     spec:
       containers:
