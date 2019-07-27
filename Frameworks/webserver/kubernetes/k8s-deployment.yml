@@ -1,0 +1,49 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: go-kub-dock-services
+  labels:
+    app: go-kub-dock-services
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: go-kub-dock-services
+        tier: service
+    spec:
+      containers:
+      - name: go-kub-dock-services
+        image: "webserver:1.0.0"
+        ports:
+        - containerPort: 9090
+        env:
+        - name: PORT
+          value: "9090"
+        
+        # define resource requests and limits
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "125m"
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+
+        # for faster SIGKILL shutdown
+        terminationGracePeriodSeconds: 5
+        
+        # check if go-kub-dock-services is alive and healthy
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 9090
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 9090
+          initialDelaySeconds: 5
+          timeoutSeconds: 5       
+        

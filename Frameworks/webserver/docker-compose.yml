@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  microservice:
+    build: .
+    image: webserver:1.0.0
+    environment:
+    - PORT=8080
+    # port mappings
+    ports:
+    - "8080:8080"

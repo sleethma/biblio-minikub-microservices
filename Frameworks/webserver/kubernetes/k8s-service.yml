@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-kub-dock-services
+  labels:
+    app: go-kub-dock-services
+    tier: service
+spec:
+  # use NodePort here to be able to access a port on each node
+  type: NodePort
+  ports:
+  - port: 9090
+  selector:
+    app: go-kub-dock-services
