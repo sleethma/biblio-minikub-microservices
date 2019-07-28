@@ -23,7 +23,7 @@ func registerServiceWithConsul() {
 	if err != nil {
 		fmt.Println(err)
 	}
-
+	//registers consule api to set env vars
 	var registration = new(consulapi.AgentServiceRegistration)
 
 	registration.ID = "simple-server"
