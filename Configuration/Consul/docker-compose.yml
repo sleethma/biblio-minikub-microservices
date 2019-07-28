@@ -7,28 +7,28 @@ services:
       - "8300:8300"
       - "8400:8400"
       - "8500:8500"
-    links:
-      - webserver-01
-      - webserver-02
+    # links:
+    #   - webserver-01
+    #   - webserver-02
     networks:
       - sky-net
 
-  webserver-01:
-    image: webserver:1.0.0
-    environment:
-      - PORT=8080
-    ports:
-      - "8080:8080"
-    networks:
-      - sky-net
-  webserver-02:
-    image: webserver:1.0.0
-    environment:
-      - PORT=9090
-    ports:
-      - "9090:9090"
-    networks:
-      - sky-net
+  # webserver-01:
+  #   image: webserver:1.0.0
+  #   environment:
+  #     - PORT=8080
+  #   ports:
+  #     - "8080:8080"
+  #   networks:
+  #     - sky-net
+  # webserver-02:
+  #   image: webserver:1.0.0
+  #   environment:
+  #     - PORT=9090
+  #   ports:
+  #     - "9090:9090"
+  #   networks:
+  #     - sky-net
 
 networks:
   sky-net:
